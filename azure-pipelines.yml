@@ -1,25 +1,23 @@
-
 trigger:
-  - main 
+  - main
 
 pool:
   name: DOE1
-  
-demands:
-  - agent.name -equals DOE1
-  
+  demands:
+    - agent.name -equals DOE1
+
 steps:
   - task: Maven@4
+    inputs:
+      mavenPomFile: 'my-app/pom.xml'
+      goals: 'clean install'
+      javaHomeOption: 'Path'
+      jdkDirectory: 'C:/Program Files/Java/jdk-17.0.2'
+      mavenVersionOption: 'Default'
 
-inputs:
-  mavenPomFile: 'my-app/pom.xml'
-  goals: 'clean install'
-  javaHomeOption: 'Path'
-  jdkDirectory: 'C:/Program Files/Java/jdk-17.0.2'
-  mavenVersionOption: 'Default'
   - task: PublishPipelineArtifact@1
-  displayName: 'Publish build artifact'
-  inputs:
-  targetPath: '$(System.DefaultWorkingDirectory)/my-app/target'
-  artifact: 'maven-build'
-  publishLocation: 'pipeline'
+    displayName: 'Publish build artifact'
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)/my-app/target'
+      artifact: 'maven-build'
+      publishLocation: 'pipeline'
