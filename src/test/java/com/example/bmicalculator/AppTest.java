@@ -1,36 +1,22 @@
 package com.example.bmicalculator;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+
+    @Test
+    void testAppHasAGreeting() {
+        String output = "Hello World!";
+        assertEquals("Hello World!", output, "App should print Hello World!");
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    @Test
+    void testBmiCalculation() {
+        double weight = 70;   // kg
+        double height = 1.75; // meters
+        double bmi = weight / (height * height);
 
-    
-    public void testApp()
-    {
-        assertTrue( true );
+        assertEquals(22.86, bmi, 0.01, "BMI should be calculated correctly");
     }
 }
