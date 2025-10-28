@@ -4,7 +4,7 @@ trigger:
 pool:
   name: DOE2
   demands:
-    - agent.name -equals doe2
+    - agent1.name -equals doe2
 
 steps:
   - task: Maven@4
@@ -21,4 +21,5 @@ steps:
       targetPath: '$(System.DefaultWorkingDirectory)/target'
       artifact: 'maven-build'
       publishLocation: 'pipeline'
+
 
