@@ -4,7 +4,7 @@ trigger:
 pool:
   name: DOE2
   demands:
-    - agent1.name -equals doe2
+    - agent.name -equals doe2
 
 steps:
   - task: Maven@4
